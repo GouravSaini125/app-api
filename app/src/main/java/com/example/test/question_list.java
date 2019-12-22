@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class topic_list extends AppCompatActivity {
+public class question_list extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ModuleAdapter adapter;
@@ -44,7 +44,7 @@ public class topic_list extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
 
-        Call<List<Module>> call = api.getTopics((Integer) b.get("id"));
+        Call<List<Module>> call = api.getQuestions((Integer) b.get("id"));
         call.enqueue(new Callback<List<Module>>() {
             @Override
             public void onResponse(Call<List<Module>> call, Response<List<Module>> response) {
@@ -60,10 +60,10 @@ public class topic_list extends AppCompatActivity {
                 }
                 recyclerView = findViewById(R.id.recyclerView);
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(topic_list.this));
+                recyclerView.setLayoutManager(new LinearLayoutManager(question_list.this));
 
 
-                adapter = new ModuleAdapter(topic_list.this,moduleList);
+                adapter = new ModuleAdapter(question_list.this,moduleList);
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setAdapter(adapter);
 

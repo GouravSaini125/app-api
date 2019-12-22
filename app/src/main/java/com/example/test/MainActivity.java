@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 for(Subject s: subjects) {
                     subjectList.add(
                             new Subject(
-                                    s.getTitle()
+                                    s.getTitle(),
+                                    s.getId()
                             )
                     );
                 }

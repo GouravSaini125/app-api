@@ -42,7 +42,9 @@ public class module_list extends AppCompatActivity {
 
         Api api = retrofit.create(Api.class);
 
-        Call<List<Module>> call = api.getModules();
+        Bundle b = getIntent().getExtras();
+
+        Call<List<Module>> call = api.getModules((Integer) b.get("id"));
         call.enqueue(new Callback<List<Module>>() {
             @Override
             public void onResponse(Call<List<Module>> call, Response<List<Module>> response) {
@@ -51,7 +53,8 @@ public class module_list extends AppCompatActivity {
                 for(Module s: modules) {
                     moduleList.add(
                             new Module(
-                                    s.getTitle()
+                                    s.getTitle(),
+                                    s.getId()
                             )
                     );
                 }
